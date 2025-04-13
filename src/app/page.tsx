@@ -1,9 +1,12 @@
-function Home() {
+import WebLayout from "./(web)/layout";
+import WebRoot from "./(web)/(pages)/(root)/page";
+
+function Root() {
   return (
-    <div className="bg-red-500">
-      Home Page
-    </div>
+    <WebLayout>
+      <WebRoot />
+    </WebLayout>
   );
 }
 
-export default Home
+export default Root
