@@ -21,6 +21,7 @@ Designed for open-source use, following best practices in scalable web app archi
 
 ## Key Concepts
 
+- [Managing Named Routes in React with TypeScript](https://www.aurelianspodarec.co.uk/blog/managing-named-routes-in-react-with-typescript)
 - [Next.js File Architecture](https://www.aurelianspodarec.co.uk/blog/best-nextjs-file-architecture)
 - [CSS Architecture Best Practices](https://www.aurelianspodarec.co.uk/blog/agnostic-css-file-organization-best-practices)
 
