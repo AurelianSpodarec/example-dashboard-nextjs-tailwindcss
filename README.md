@@ -4,7 +4,7 @@ A modern dashboard built with **Next.js**, styled using **TailwindCSS**, and equ
 
 Designed for open-source use, following best practices in scalable web app architecture.
 
-## Technologies used  
+## Technologies used
 
 - [Next.js](https://nextjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
@@ -13,13 +13,15 @@ Designed for open-source use, following best practices in scalable web app archi
 
 ## Features
 
-- Multi-theme support for a personalized user experience  
-- Modular UI Architecture with reusable components  
-- Fully responsive and extendable dashboard layout  
-- Customizable JSON Navigation Menu for flexible structure adjustments  
+- Multi-theme support for a personalized user experience
+- Modular UI Architecture with reusable components
+- Separate landing page and dashboard directories for better project organization and clarity.
+- Fully responsive and extendable dashboard layout
+- Customizable JSON Navigation Menu for flexible structure adjustments
 
 ## Key Concepts
 
+- [Next.js File Architecture](https://www.aurelianspodarec.co.uk/blog/best-nextjs-file-architecture)
 - [CSS Architecture Best Practices](https://www.aurelianspodarec.co.uk/blog/agnostic-css-file-organization-best-practices)
 
 ## Getting Started
