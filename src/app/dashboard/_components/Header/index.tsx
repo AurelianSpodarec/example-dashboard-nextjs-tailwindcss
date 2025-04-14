@@ -1,4 +1,4 @@
-import { SidebarTrigger } from "@/app/dashboard/_components/Sidebar/_components/sidebar";
+import { SidebarTrigger } from "./../Sidebar/_components/sidebar";
 
 function DashboardHeader() {
   return (
