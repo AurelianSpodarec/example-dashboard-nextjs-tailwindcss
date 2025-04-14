@@ -4,6 +4,7 @@ import {
   Home,
   Package,
   Palette,
+  PieChart,
   Users
 } from "lucide-react"
 
@@ -12,6 +13,11 @@ const dataNav = [
     title: "Home",
     url: DashboardRoutes.ROOT,
     icon: Home,
+  },
+  {
+    title: "Charts",
+    url: DashboardRoutes.CHARTS,
+    icon: PieChart
   },
   {
     title: "Themes",
