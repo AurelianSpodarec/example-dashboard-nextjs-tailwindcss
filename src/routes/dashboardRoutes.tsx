@@ -1,6 +1,6 @@
 export enum DashboardRoutes {
   ROOT = "/dashboard",
-  POSTS = `${DashboardRoutes.ROOT}/posts`,
   USERS = `${DashboardRoutes.ROOT}/users`,
-  THEMES = `${DashboardRoutes.ROOT}/themes`
+  THEMES = `${DashboardRoutes.ROOT}/themes`,
+  COMPONENTS = `${DashboardRoutes.ROOT}/components`
 }

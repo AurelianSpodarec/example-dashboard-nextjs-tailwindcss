@@ -1,17 +1,19 @@
-import Link from "next/link";
-import { DashboardRoutes, WebsiteRoutes } from "@/routes";
+import { Sidebar, SidebarContent, SidebarRail } from "@/app/dashboard/_components/Sidebar/_components/sidebar";
 
-function DashboardSidebar() {
+import dataNav from "./dataNav";
+
+import Navlogo from "./_components/nav-logo";
+import { NavMain } from "./_components/nav-main";
+
+function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <aside>
-      Dashboard Sidebar
-      <div className="flex flex-col">
-        <Link href={WebsiteRoutes.ROOT} className="underline text-blue-700">Go to Landing Page</Link>
-        <Link href={DashboardRoutes.ROOT} className="underline text-blue-700">Dashboard Page: Home</Link>
-        <Link href={DashboardRoutes.USERS} className="underline text-blue-700">Dashboard Page: Users</Link>
-        <Link href={DashboardRoutes.THEMES} className="underline text-blue-700">Dashboard Page: Themes</Link>
-      </div>
-    </aside>
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarContent>
+        <Navlogo />
+        <NavMain items={dataNav} />
+      </SidebarContent>
+      <SidebarRail />
+    </Sidebar>
   );
 }
 
