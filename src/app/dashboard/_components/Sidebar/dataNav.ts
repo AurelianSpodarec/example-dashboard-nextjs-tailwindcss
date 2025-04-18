@@ -5,7 +5,8 @@ import {
   Package,
   Palette,
   PieChart,
-  Users
+  Users,
+  NotebookPen
 } from "lucide-react"
 
 const dataNav = [
@@ -18,6 +19,11 @@ const dataNav = [
     title: "Charts",
     url: DashboardRoutes.CHARTS,
     icon: PieChart
+  },
+  {
+    title: "Notes",
+    url: DashboardRoutes.NOTES,
+    icon: NotebookPen
   },
   {
     title: "Themes",
