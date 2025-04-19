@@ -14,9 +14,9 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
       <DashboardSidebar />
       <SidebarInset>
         <DashboardHeader />
-        <main className="h-full w-full">
+        <section className="h-full w-full max-h-screen overflow-auto">
           {children}
-        </main>
+        </section>
       </SidebarInset>
     </SidebarProvider>
   )

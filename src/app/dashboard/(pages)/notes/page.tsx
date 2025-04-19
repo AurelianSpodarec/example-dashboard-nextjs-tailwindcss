@@ -103,7 +103,7 @@ function DashboardNoteIndex() {
   }, [])
 
   return (
-    <div className="flex h-screen bg-[#f5f5f7]">
+    <div className="flex h-full bg-[#f5f5f7]">
       <NotesSidebar
         notes={notes}
         filteredNotes={filteredNotes}
