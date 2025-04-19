@@ -5,6 +5,7 @@ import { INote, NotesContext } from './useNotes';
 
 export function NotesProvider({ children }: { children: React.ReactNode }) {
   const [notes, setNotes] = useState<INote[]>([])
+  const [totalNotes, setTotalNotes] = useState(0)
   const [selectedNote, setSelectedNote] = useState<INote | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [isLoaded, setIsLoaded] = useState(false)
@@ -79,14 +80,26 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  // Utils
+  // =====================================================
+
+  function countTotalNotes() {
+    setTotalNotes(filteredNotes.length)
+  }
+
   // Use Effects
   // =====================================================
 
   useEffect(() => {
     if (isLoaded) {
       saveNotes()
+      countTotalNotes()
     }
   }, [notes, isLoaded])
+
+  useEffect(() => {
+    countTotalNotes()
+  }, [searchQuery])
 
   useEffect(() => {
     loadSavedNotes()
@@ -104,7 +117,9 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
         createNewNote,
         loadSavedNotes,
         updateNote,
-        deleteNote
+        deleteNote,
+
+        totalNotes
       }}
     >
       {children}

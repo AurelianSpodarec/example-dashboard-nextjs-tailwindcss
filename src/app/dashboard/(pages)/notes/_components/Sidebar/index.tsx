@@ -1,4 +1,4 @@
-import { PlusCircle, Search, Trash2 } from "lucide-react"
+import { Edit, PlusCircle, Search, Trash2 } from "lucide-react"
 import { cn, formatDate } from "@/lib/utils"
 
 import { useNotes } from "../../_context/useNotes"
@@ -17,15 +17,16 @@ function NotesSidebar() {
     filteredNotes,
     setSelectedNote,
     selectedNote,
-    deleteNote
+    deleteNote,
+    totalNotes
   } = useNotes()
 
   return (
-    <aside className="w-80 bg-white border-r border-gray-200 flex flex-col h-full">
+    <aside className="w-full xl:w-80 bg-white border-r border-gray-200 flex flex-col h-full">
 
       <header className="p-4 border-b border-gray-200">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-xl font-medium text-gray-900">Notes</h1>
+          <h1 className="text-xl font-medium text-gray-900">Notes {totalNotes}</h1>
           <Button variant="ghost" size="icon" onClick={createNewNote} className="text-gray-600 hover:text-gray-900">
             <PlusCircle className="h-5 w-5" />
             <span className="sr-only">New note</span>
@@ -78,6 +79,13 @@ function NotesSidebar() {
           </div>
         )}
       </section>
+      {/* <footer className="flex justify-between">
+        <span className="ml-auto">3 notes</span>
+        <button type="button" className="ml-auto">
+          <span className="sr-only">Create note</span>
+          <Edit />
+        </button>
+      </footer> */}
     </aside>
   )
 }

@@ -3,19 +3,32 @@ import { useNotes } from "../../_context/useNotes"
 
 import { Input } from "@/components/ui/input"
 import EmptyNoteMessage from "./EmptyNoteMessage"
+import { ChevronLeft } from "lucide-react"
 
 function NotesEditor() {
-  const { updateNote, selectedNote } = useNotes()
+  const { updateNote, selectedNote, setSelectedNote } = useNotes()
 
   return (
-    <section className="flex-1 flex flex-col h-full">
+    <section
+      className={`
+        bg-white transition duration-300 ease-in-out ${selectedNote?.id ? "" : "translate-x-[100%] lg:translate-x-0"} 
+        absolute top-0 right-0 bottom-0 left-0 lg:relative flex-1 flex flex-col h-full
+    `}
+    >
       {selectedNote ? (
         <>
-          <div className="p-6">
+          <header>
+            <button onClick={() => setSelectedNote(null)} className="lg:hidden flex items-center">
+              <ChevronLeft className="font-bold" />
+              <span className="text-xs font-semibold">Notes</span>
+            </button>
+          </header>
+
+          <div className="p-6 overflow-hidden">
             <Input
               value={selectedNote.title}
               onChange={(e) => updateNote(selectedNote.id, { title: e.target.value })}
-              className="text-2xl font-medium border-0 p-0 focus-visible:ring-0 bg-transparent"
+              className="text-2xl font-medium shadow-none border-0 p-0 focus-visible:ring-0 bg-transparent"
             />
             <p className="text-xs text-gray-400 mt-2">Last edited on {formatDate(selectedNote.updatedAt)}</p>
           </div>

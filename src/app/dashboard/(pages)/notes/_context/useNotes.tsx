@@ -19,13 +19,14 @@ export type TNotesContextType = {
   loadSavedNotes: () => void
   updateNote: (id: string, updates: Partial<INote>) => void
   deleteNote: (id: string) => void
+  totalNotes: number
 };
 
 export const NotesContext = createContext<TNotesContextType | null>(null);
 
 export function useNotes(): TNotesContextType {
   let context = useContext(NotesContext);
-  
+
   if (context === null) {
     throw new Error('useNotes must be used within a ProviderNotes');
   }

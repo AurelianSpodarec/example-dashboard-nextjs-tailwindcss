@@ -6,11 +6,15 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(date)
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "long", // Adds the weekday (e.g., "Tuesday")
+    month: "long",   // Full month name (e.g., "April")
+    day: "numeric",  // Day of the month
+    year: "numeric", // Full year (e.g., "2023")
+    hour: "2-digit", // 2-digit hour
+    minute: "2-digit", // 2-digit minute
+    hour12: true,    // Use 12-hour clock (AM/PM)
+  };
+
+  return new Intl.DateTimeFormat("en-US", options).format(date);
 }
