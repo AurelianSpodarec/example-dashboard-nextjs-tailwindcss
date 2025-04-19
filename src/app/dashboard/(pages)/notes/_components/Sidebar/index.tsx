@@ -1,18 +1,25 @@
 import { PlusCircle, Search, Trash2 } from "lucide-react"
 import { cn, formatDate } from "@/lib/utils"
 
+import { useNotes } from "../../_context/useNotes"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-function EmptyStateMessage({ notes }) {
-  return (
-    <div className="p-4 text-center text-gray-500">
-      {notes.length === 0 ? "No notes yet. Create one!" : "No matching notes found."}
-    </div>
-  )
-}
+import EmptyStateMessage from "./EmptyStateMessage"
 
-function NotesSidebar({ notes, filteredNotes, setSelectedNote, selectedNote, deleteNote, createNewNote, searchQuery, setSearchQuery }) {
+function NotesSidebar() {
+  const {
+    notes,
+    createNewNote,
+    searchQuery,
+    setSearchQuery,
+    filteredNotes,
+    setSelectedNote,
+    selectedNote,
+    deleteNote
+  } = useNotes()
+
   return (
     <aside className="w-80 bg-white border-r border-gray-200 flex flex-col h-full">
 

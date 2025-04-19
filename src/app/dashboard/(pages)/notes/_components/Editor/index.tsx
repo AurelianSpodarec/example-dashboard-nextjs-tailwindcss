@@ -1,22 +1,12 @@
-import { PlusCircle, Search, Trash2 } from "lucide-react"
 import { formatDate } from "@/lib/utils"
+import { useNotes } from "../../_context/useNotes"
 
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import EmptyNoteMessage from "./EmptyNoteMessage"
 
-function EmptyNoteMessage({ createNewNote }) {
-  return (
-    <div className="flex flex-col items-center justify-center h-full text-gray-400">
-      <p className="mb-4">Select a note or create a new one</p>
-      <Button onClick={createNewNote} className="bg-gray-100 text-gray-900 hover:bg-gray-200">
-        <PlusCircle className="h-4 w-4 mr-2" />
-        New Note
-      </Button>
-    </div>
-  )
-}
+function NotesEditor() {
+  const { updateNote, selectedNote } = useNotes()
 
-function NotesEditor({ notes, selectedNote, createNewNote, updateNote }) {
   return (
     <section className="flex-1 flex flex-col h-full">
       {selectedNote ? (
@@ -39,7 +29,7 @@ function NotesEditor({ notes, selectedNote, createNewNote, updateNote }) {
           </div>
         </>
       ) : (
-        <EmptyNoteMessage createNewNote={createNewNote} />
+        <EmptyNoteMessage />
       )}
     </section>
   )
