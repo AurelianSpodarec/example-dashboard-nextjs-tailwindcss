@@ -1,5 +1,8 @@
 "use client"
 
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
 import { ChevronRight, type LucideIcon } from "lucide-react"
 
 import {
@@ -17,7 +20,6 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "./sidebar"
-import Link from "next/link"
 
 interface IItems {
   items: {
@@ -33,11 +35,16 @@ interface IItems {
 }
 
 export function NavMain({ items }: IItems) {
+  const pathname = usePathname()
+
   return (
     <SidebarGroup>
       <SidebarMenu>
         {items.map((item) => {
           const hasSubItems = Array.isArray(item.items) && item.items.length > 0
+          const isParentActive =
+            item.url === pathname ||
+            (item.items && item.items.some((sub) => sub.url === pathname))
           return (
             <Collapsible
               key={item.url}
@@ -47,7 +54,7 @@ export function NavMain({ items }: IItems) {
             >
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
-                  <SidebarMenuButton tooltip={item.title}>
+                  <SidebarMenuButton tooltip={item.title} className={isParentActive ? "bg-muted font-semibold" : ""}>
                     {!hasSubItems && <Link href={item.url} className="absolute inset-0 z-10" />}
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
@@ -59,15 +66,18 @@ export function NavMain({ items }: IItems) {
                 {item?.items &&
                   <CollapsibleContent>
                     <SidebarMenuSub>
-                      {item.items?.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.url}>
-                          <SidebarMenuSubButton asChild>
-                            <Link href={subItem.url}>
-                              <span>{subItem.title}</span>
-                            </Link>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
+                      {item.items?.map((subItem) => {
+                        const isSubActive = subItem.url === pathname
+                        return (
+                          <SidebarMenuSubItem key={subItem.url} className={isSubActive ? "bg-muted font-medium" : ""}>
+                            <SidebarMenuSubButton asChild>
+                              <Link href={subItem.url}>
+                                <span>{subItem.title}</span>
+                              </Link>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        )
+                      })}
                     </SidebarMenuSub>
                   </CollapsibleContent>
                 }
